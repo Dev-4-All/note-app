@@ -2,6 +2,7 @@ package note
 
 import (
 	"errors"
+	"fmt"
 	"time"
 )
 
@@ -25,4 +26,8 @@ func New(title, content string) (Note, error) {
 
 func isInputInvalid(title, content string) bool {
 	return title == "" || content == ""
+}
+
+func (note Note) Display() {
+	fmt.Printf("Your note titled '%s' has the following content:\n\n%s", note.title, note.content)
 }
