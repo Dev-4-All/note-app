@@ -1,3 +1,3 @@
-module example.com/note
+module example.com/note-app
 
 go 1.27.0

@@ -1,12 +1,15 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+
+	"example.com/note-app/note"
 )
 
 func main() {
-	title, content, err := getNoteData()
+	title, content := getNoteData()
+
+	note, err := note.New(title, content)
 
 	if err != nil {
 		fmt.Println(err)
@@ -14,15 +17,11 @@ func main() {
 	}
 }
 
-func getNoteData() (string, string, error) {
+func getNoteData() (string, string) {
 	title := getUserInput("Enter title: ")
 	content := getUserInput("Enter content: ")
 
-	if isInvalid(title) || isInvalid(content) {
-		return "", "", errors.New("Invalid input!")
-	}
-
-	return title, content, nil
+	return title, content
 }
 
 func getUserInput(prompt string) string {
@@ -31,12 +30,4 @@ func getUserInput(prompt string) string {
 	fmt.Scan(&input)
 
 	return input
-}
-
-func isInvalid(input string) bool {
-	if input == "" {
-		return true
-	}
-
-	return false
 }
