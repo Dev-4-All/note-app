@@ -29,5 +29,5 @@ func isInputInvalid(title, content string) bool {
 }
 
 func (note Note) Display() {
-	fmt.Printf("Your note titled '%s' has the following content:\n\n%s", note.title, note.content)
+	fmt.Printf("Your note titled '%s' has the following content:\n\n%s\n", note.title, note.content)
 }
